@@ -6,13 +6,15 @@ public class Calculator {
         // -가 들어있으면 index 숫자를 반환한다. 없다면 -1을 반환한다.
         boolean isMinus = s.indexOf(" - ") != -1;
         boolean isMultiple = s.indexOf(" * ") != -1;
+        boolean isDivide = s.indexOf(" / ") != -1;
 
         if(isMinus) {
             return runMinus(s);
         } else if(isMultiple) {
             return runMultiple(s);
+        } else if(isDivide) {
+            return runDivide(s);
         }
-
         return runPlus(s);
     }
 
@@ -25,7 +27,7 @@ public class Calculator {
     }
 
     private static int runMinus(String s) {
-        String[] sBits = s.split(" \\- ");
+        String[] sBits = s.split(" - ");
         int no1 = Integer.parseInt(sBits[0]);
         int no2 = Integer.parseInt(sBits[1]);
 
@@ -38,6 +40,14 @@ public class Calculator {
         int no2 = Integer.parseInt(sBits[1]);
 
         return no1 * no2;
+    }
+
+    private static int runDivide(String s) {
+        String[] sBits = s.split(" / ");
+        int no1 = Integer.parseInt(sBits[0]);
+        int no2 = Integer.parseInt(sBits[1]);
+
+        return no1 / no2;
     }
 
 }
